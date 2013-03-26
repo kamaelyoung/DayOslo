@@ -234,7 +234,7 @@
         self.loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 11, 300, 21)];
-        label.text = @"Loading...";
+        label.text = @"Laster...";
         label.textColor = [UIColor whiteColor];
         label.backgroundColor = [UIColor clearColor];
         

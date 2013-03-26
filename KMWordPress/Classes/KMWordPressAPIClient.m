@@ -12,7 +12,7 @@
 
 #import "KMWordPressPost.h"
 
-static NSString * const kKMWordpressURLString =  @"http://www.broadsheet.ie/";
+static NSString * const kKMWordpressURLString =  @"http://dayoslo.com/";
 
 @implementation KMWordPressAPIClient
 + (instancetype)sharedClient

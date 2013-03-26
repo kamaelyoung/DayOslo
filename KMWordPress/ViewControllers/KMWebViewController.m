@@ -131,9 +131,9 @@
 {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
                                                        delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                              cancelButtonTitle:NSLocalizedString(@"Avbryt", nil)
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:NSLocalizedString(@"Open in Safari", nil), NSLocalizedString(@"Copy To Clipboard", nil), nil];
+                                              otherButtonTitles:NSLocalizedString(@"Åpne i Safari", nil), NSLocalizedString(@"Kopier adresse", nil), nil];
     [sheet showInView:self.view];
 }
 

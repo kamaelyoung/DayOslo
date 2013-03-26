@@ -74,7 +74,7 @@
     
     [self attachBackSwipe:self.view];
     
-    [[[GAI sharedInstance] defaultTracker] sendView:[NSString stringWithFormat:@"Comment List: %@ %@", self.post.titlePlain, self.post.kMWordPressPostId]];
+    [[[GAI sharedInstance] defaultTracker] sendView:[NSString stringWithFormat:@"Kommentarliste: %@ %@", self.post.titlePlain, self.post.kMWordPressPostId]];
 }
 
 - (void)viewDidUnload {

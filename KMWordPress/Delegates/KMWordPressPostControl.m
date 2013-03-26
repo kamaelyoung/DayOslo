@@ -216,7 +216,7 @@
     {
         TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
         
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ via @broadsheet_ie", self.post.title]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ via Day Oslo for iPhone", self.post.title]];
         
         [tweetSheet addURL: [NSURL URLWithString:self.post.url]];
         
@@ -225,8 +225,8 @@
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"No Twitter Accounts"
-                                  message:@"You must set up at least one account in Settings > Twitter before you can share via Twitter"
+                                  initWithTitle:@"Ingen Twitter-kontoer"
+                                  message:@"Du må konfigurere en Twitter-konto under Settings > Twitter før du kan dele via Twitter."
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
@@ -248,17 +248,17 @@
         
         mailer.mailComposeDelegate = self;
         
-        [mailer setSubject:[NSString stringWithFormat:@"You may like this story: %@", self.post.titlePlain]];
+        [mailer setSubject:[NSString stringWithFormat:@"Sjekke denne posten: %@", self.post.titlePlain]];
         
-        NSString *body = [NSString stringWithFormat:@"Hi,<br /><br />I thought you might like this story '%@'.  You can view the full story on the <a href=\"%@\">Broadsheet.ie</a> site.", self.post.titlePlain, self.post.url];
+        NSString *body = [NSString stringWithFormat:@"Hei,<br /><br />Tenkte kanskje du ville like denne historien '%@'.  Du kan sjekke ut hele posten på <a href=\"%@\">Day Oslo</a> sin side.", self.post.titlePlain, self.post.url];
         [mailer setMessageBody:body isHTML:YES];
         
         [self.delegate.navigationController presentModalViewController:mailer animated:YES];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No email settings"
-                                                        message:@"You can't send emails from this device"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ingen mail-innstillinger"
+                                                        message:@"Du kan ikke sende mail fra denne enheten."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -276,19 +276,19 @@
         
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         
-        [mailer setSubject:[NSString stringWithFormat:@"Feedback for %@", [infoDictionary objectForKey:@"CFBundleName"]]];
+        [mailer setSubject:[NSString stringWithFormat:@"Tilbakemelding for %@", [infoDictionary objectForKey:@"CFBundleName"]]];
         
-        NSString *body = [NSString stringWithFormat:@"\n\n\nApp version: %@ (%@)\niOS Version: %@\niOS Device: %@", [infoDictionary objectForKey:@"CFBundleShortVersionString"], [infoDictionary objectForKey:@"CFBundleVersion"], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model]];
+        NSString *body = [NSString stringWithFormat:@"\n\n\nApp versjon: %@ (%@)\niOS Versjon: %@\niOS Enhet: %@", [infoDictionary objectForKey:@"CFBundleShortVersionString"], [infoDictionary objectForKey:@"CFBundleVersion"], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model]];
         [mailer setMessageBody:body isHTML:NO];
         
-        [mailer setToRecipients:@[@"feedback@crayonsandbrownpaper.com"]];
+        [mailer setToRecipients:@[@"daystoreoslo@gmail.com"]];
         
         [self.delegate.navigationController presentModalViewController:mailer animated:YES];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No email settings"
-                                                        message:@"You can't send emails from this device"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ingen mail-innstillinger"
+                                                        message:@"Du kan ikke sende mail fra denne enheten."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

@@ -19,6 +19,8 @@
 
 #import "KMNavigationController.h"
 
+#import "KMColors.h"
+
 @interface KMAppDelegate()
 @property (nonatomic, strong) UISplitViewController *splitViewController;
 @end
@@ -39,6 +41,10 @@
     KMIndexViewController *viewController = [[KMIndexViewController alloc] initWithNibName:nil bundle:nil];
     
     self.navController = [[KMNavigationController alloc] initWithRootViewController:viewController];
+    UIImage *navBackground = [[UIImage imageNamed:@"dayNavBar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [[UINavigationBar appearance] setBackgroundImage:navBackground forBarMetrics:UIBarMetricsDefault];
+    [self.navController.navigationBar setTintColor:[KMColors dayGrayColor]];
+    
     
     self.window.rootViewController = self.navController;
     
@@ -49,9 +55,9 @@
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     [GAI sharedInstance].dispatchInterval = 20;
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-SOMENUMBER-3"];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-39610504-1"];
     
-    [Appirater setAppId:@"413093424"];
+    [Appirater setAppId:@"621986632"];
     [Appirater setDaysUntilPrompt:7];
     [Appirater setUsesUntilPrompt:21];
     [Appirater setTimeBeforeReminding:2];

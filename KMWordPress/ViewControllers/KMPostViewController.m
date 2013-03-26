@@ -498,7 +498,7 @@
         
         return NO;
     }
-    else if ([[[request URL] absoluteString] rangeOfString:@"broadsheet.ie/20"].location != NSNotFound)
+    else if ([[[request URL] absoluteString] rangeOfString:@"dayoslo.com/20"].location != NSNotFound)
     {
         KMPostViewController *vc = [[KMPostViewController alloc] initWithPostUrl:[request URL]];
         

@@ -59,7 +59,7 @@
         
         _name = [[UITextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
         _name.returnKeyType = UIReturnKeyNext;
-        _name.placeholder= @"Your name";
+        _name.placeholder= @"Ditt navn";
         _name.delegate = self;
         _name.autocorrectionType = UITextAutocorrectionTypeNo;
         _name.backgroundColor = [UIColor clearColor];
@@ -68,7 +68,7 @@
         _email = [[HTAutocompleteTextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
         _email.keyboardType = UIKeyboardTypeEmailAddress;
         _email.returnKeyType = UIReturnKeyNext;
-        _email.placeholder = @"Your email address";
+        _email.placeholder = @"Din mailadresse";
         _email.delegate = self;
         _email.backgroundColor = [UIColor clearColor];
         _email.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -82,7 +82,7 @@
         _url = [[UITextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
         _url.keyboardType = UIKeyboardTypeURL;
         _url.returnKeyType = UIReturnKeyNext;
-        _url.placeholder = @"Your website";
+        _url.placeholder = @"Din hjemmeside";
         _url.delegate = self;
         _url.backgroundColor = [UIColor clearColor];
         _url.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -162,19 +162,19 @@
     {
         result = NO;
         
-        [errorMessage appendString:@"Please enter your name\n"];
+        [errorMessage appendString:@"Vennligst skriv navnet ditt\n"];
     }
 
     if (![self.email.text length])
     {
         result = NO;
-        [errorMessage appendString:@"Please enter an email address\n"];
+        [errorMessage appendString:@"Vennligst skriv mailadressen din\n"];
     }
     
     if (![self.message.text length])
     {
         result = NO;
-        [errorMessage appendString:@"Please enter a message"];
+        [errorMessage appendString:@"Vennligst skriv en melding"];
     }
     
     if (!result)
@@ -215,7 +215,7 @@
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = NSLocalizedString(@"Posting Comment", nil);
+    hud.labelText = NSLocalizedString(@"Poster kommentar", nil);
     
     NSMutableDictionary *params = @{@"post_id": self.post.kMWordPressPostId, @"email" : self.email.text, @"name" : self.name.text, @"content" : self.message.text}.mutableCopy;
     

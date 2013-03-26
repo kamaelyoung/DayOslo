@@ -218,7 +218,7 @@
     
     
     // This title will be displayed until we get the results back for the album information.
-    self.title = NSLocalizedString(@"Loading...", @"Navigation bar title - Loading a photo album");
+    self.title = NSLocalizedString(@"Laster...", @"Navigation bar title - Loading a photo album");
     
     [self loadThumbnails];
     [self.photoAlbumView reloadData];

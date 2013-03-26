@@ -16,6 +16,8 @@
 
 #import "KMWordPressPost.h"
 
+#import "KMColors.h"
+
 //NSDate * yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400];
 
 @interface KMPostTableViewCell()
@@ -39,9 +41,9 @@
 
 - (void)awakeFromNib
 {
-    self.storyImage.layer.borderColor = [UIColor grayColor].CGColor;
+    self.storyImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.storyImage.layer.borderWidth = 1.0f;
-    self.storyImage.layer.cornerRadius = 4.0f;
+    self.storyImage.layer.cornerRadius = 0.0f;
     self.storyImage.clipsToBounds = YES;
     
     self.storyTitle.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;

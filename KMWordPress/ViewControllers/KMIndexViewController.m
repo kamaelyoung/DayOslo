@@ -18,6 +18,8 @@
 
 #import "KMWordPressPost.h"
 
+#import "KMColors.h"
+
 @interface KMIndexViewController ()
 @property (nonatomic, strong) UISearchBar *blogSearch;
 @property (nonatomic, strong) UIView *menuView;
@@ -49,7 +51,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    self.title = @"Broadsheet";
+    self.title = @"Day Oslo";
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeInfoLight];
     
@@ -61,13 +63,14 @@
     
     self.navigationItem.leftBarButtonItem = infoItem;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
-                                                                                           target:self
-                                                                                           action:@selector(submitTip)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+//                                                                                           target:self
+//                                                                                           action:@selector(submitTip)];
     self.blogSearch = [[UISearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)];
     self.blogSearch.delegate = self;
     self.blogSearch.showsScopeBar = YES;
-    self.blogSearch.placeholder = @"Search Broadsheet.ie";
+    self.blogSearch.placeholder = @"Søk i Day Oslo";
+    self.blogSearch.tintColor = [KMColors dayGrayColor];
     
     self.tableView.tableHeaderView = self.blogSearch;
     
@@ -75,7 +78,7 @@
     
     self.tableView.delegate = self;
 
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"broadsheet_black.png"]];
+    self.navigationItem.title = @"Day Oslo";
 }
 
 - (void)viewWillAppear:(BOOL)animated

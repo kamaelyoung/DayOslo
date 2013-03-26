@@ -14,7 +14,9 @@
 #import "KMWebViewController.h"
 #import "KMSettingsViewController.h"
 
-#define kAppId  @"413093424"
+#import "KMColors.h"
+
+#define kAppId  @"621986632"
 
 @interface KMAboutViewController ()
 
@@ -35,13 +37,14 @@
 {
     [super viewDidLoad];
 
+    [self.navigationController.navigationBar setTintColor:[KMColors dayGrayColor]];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                           target:self
                                                                                           action:@selector(done)];
     
-    self.navigationItem.title = @"About";
+    self.navigationItem.title = @"Om";
     
-    [[[GAI sharedInstance] defaultTracker] sendView:@"About"];
+    [[[GAI sharedInstance] defaultTracker] sendView:@"Om"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +73,7 @@
             return 3;
             break;
         case 1:
-            return 3;
+            return 0;
             break;
         case 2:
             //break;
@@ -102,19 +105,19 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"Rate this App";
+                    cell.textLabel.text = @"Vurder appen";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                     break;
                 case 1:
                 {
-                    cell.textLabel.text = @"Share this App";
+                    cell.textLabel.text = @"Del appen";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                     break;
                 case 2:
                 {
-                    cell.textLabel.text = @"Contact Us";
+                    cell.textLabel.text = @"Kontakt oss";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                     break;
@@ -154,7 +157,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"Settings";
+                    cell.textLabel.text = @"Innstillinger";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                     break;
@@ -168,7 +171,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.textLabel.text = @"Version";
+                    cell.textLabel.text = @"Versjon";
                     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
                     
                     NSString *majorVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
@@ -249,11 +252,11 @@
                     break;
                 case 1:
                 {
-                    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Share"
+                    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Del"
                                                                        delegate:self
-                                                              cancelButtonTitle:@"Cancel"
+                                                              cancelButtonTitle:@"Avbryt"
                                                          destructiveButtonTitle:nil
-                                                              otherButtonTitles:@"Facebook", @"Twitter", @"Email", nil];
+                                                              otherButtonTitles:@"Facebook", @"Twitter", @"Mail", nil];
                     [sheet showInView:self.view];
                     
                     [[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"uiAction"
@@ -370,7 +373,7 @@
     {
         TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
         
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ is a great little app from @CrayonsBrownPap", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"%@ finnes også på iPhone. Last ned da vel.", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]]];
         
         [tweetSheet addURL: [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/ie/app/id%@?mt=8", kAppId]]];
         
@@ -379,8 +382,8 @@
     else
     {
         UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"No Twitter Accounts"
-                                  message:@"You must set up at least one account in Settings > Twitter before you can share via Twitter"
+                                  initWithTitle:@"Ingen Twitter kontoer"
+                                  message:@"Du må konfigurere minst 1 Twitter-konto under Innstillinger > Twitter før du kan dele via Twitter"
                                   delegate:self
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
@@ -404,17 +407,17 @@
         
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         
-        [mailer setSubject:[NSString stringWithFormat:@"You may like this app: %@", [infoDictionary objectForKey:@"CFBundleName"]]];
+        [mailer setSubject:[NSString stringWithFormat:@"Kanskje du vil like denne appen: %@", [infoDictionary objectForKey:@"CFBundleName"]]];
         
-        NSString *body = [NSString stringWithFormat:@"Hi,<br /><br />I thought you might like %@.  You can download it from the <a href=\"%@\">iTunes App Store</a>.", [infoDictionary objectForKey:@"CFBundleName"], [NSString stringWithFormat:@"https://itunes.apple.com/ie/app/id%@?mt=8", kAppId]];
+        NSString *body = [NSString stringWithFormat:@"Hei,<br /><br />Jeg tenkte kanskje du ville ha %@.  Du kan laste den ned fra <a href=\"%@\">iTunes App Store</a>.", [infoDictionary objectForKey:@"CFBundleName"], [NSString stringWithFormat:@"https://itunes.apple.com/ie/app/id%@?mt=8", kAppId]];
         [mailer setMessageBody:body isHTML:YES];
 
         [self.navigationController presentModalViewController:mailer animated:YES];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No email settings"
-                                                        message:@"You can't send emails from this device"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail ikke konfigurert"
+                                                        message:@"Du kan ikke sende mail på denne enheten."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -432,19 +435,19 @@
         
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         
-        [mailer setSubject:[NSString stringWithFormat:@"Feedback for %@", [infoDictionary objectForKey:@"CFBundleName"]]];
+        [mailer setSubject:[NSString stringWithFormat:@"Tilbakemelding for %@", [infoDictionary objectForKey:@"CFBundleName"]]];
         
         NSString *body = [NSString stringWithFormat:@"\n\n\nApp version: %@ (%@)\niOS Version: %@\niOS Device: %@", [infoDictionary objectForKey:@"CFBundleShortVersionString"], [infoDictionary objectForKey:@"CFBundleVersion"], [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] model]];
         [mailer setMessageBody:body isHTML:NO];
         
-        [mailer setToRecipients:@[@"feedback@crayonsandbrownpaper.com"]];
+        [mailer setToRecipients:@[@"daystoreoslo@gmail.com"]];
          
         [self.navigationController presentModalViewController:mailer animated:YES];
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No email settings"
-                                                        message:@"You can't send emails from this device"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ingen mail kontoer"
+                                                        message:@"Du kan ikke sende mail på denne enheten."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

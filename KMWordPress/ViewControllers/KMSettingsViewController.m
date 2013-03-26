@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Settings";
+    self.title = @"Innstillinger";
     
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.tableView.tableFooterView = self.footerView;
@@ -60,7 +60,7 @@
     
     self.name = [[UITextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
     self.name.returnKeyType = UIReturnKeyNext;
-    self.name.placeholder= @"Your name";
+    self.name.placeholder= @"Ditt navn";
     self.name.delegate = self;
     self.name.autocorrectionType = UITextAutocorrectionTypeNo;
     self.name.backgroundColor = [UIColor clearColor];
@@ -69,7 +69,7 @@
     self.email = [[HTAutocompleteTextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
     self.email.keyboardType = UIKeyboardTypeEmailAddress;
     self.email.returnKeyType = UIReturnKeyNext;
-    self.email.placeholder = @"Your email address";
+    self.email.placeholder = @"Din mailadresse";
     self.email.delegate = self;
     self.email.backgroundColor = [UIColor clearColor];
     self.email.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -82,7 +82,7 @@
     self.url = [[UITextField alloc] initWithFrame:CGRectMake(5, 11, 290, 22)];
     self.url.keyboardType = UIKeyboardTypeURL;
     self.url.returnKeyType = UIReturnKeyNext;
-    self.url.placeholder = @"Your website";
+    self.url.placeholder = @"Din hjemmeside";
     self.url.delegate = self;
     self.url.backgroundColor = [UIColor clearColor];
     self.url.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -178,13 +178,13 @@
 {
     switch (section) {
         case 0:
-            return @"Help";
+            return @"Hjelp";
             break;
         case 1:
-            return @"Comment details";
+            return @"Ved kommentering";
             break;
         case 2:
-            return @"Text Size";
+            return @"Tekststørrelse";
             break;
         default:
             break;
@@ -199,7 +199,7 @@
     {
         KMSwitchCell *cell = (KMSwitchCell *)[tableView dequeueReusableCellWithIdentifier:@"KMSwitchCell"];
 
-        cell.switchLabel.text = @"Show help";
+        cell.switchLabel.text = @"Vis hint";
         cell.itemSwitch.on = ![[NSUserDefaults standardUserDefaults] boolForKey:@"helpShown"];
         return cell;
     }
