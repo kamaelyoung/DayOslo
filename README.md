@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 KMWordPress
 ===========
 
@@ -40,3 +41,9 @@ KMWordPress uses ARC.
 ## License
 
 KMWordPress is available under the MIT license. See the LICENSE file for more info.
+=======
+DayOslo
+=======
+
+Wordpress Blog app for iOS, dayoslo.com
+>>>>>>> cb2a0f42a919407568f29e37f3d17100878e0f2f
